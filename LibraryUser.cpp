@@ -48,7 +48,6 @@ void LibraryUser::registerUser() {
 
     cout << "The User: " << firstName << " " << lastName << " (" << day << '-'
          << month << '-' << year << ") is now registered" << endl;
-
 }
 
 void LibraryUser::checkBirthDate() {
