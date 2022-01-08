@@ -2,7 +2,6 @@
 #include <iostream>
 
 LibraryUser::LibraryUser() {
-    registerUser();
 }
 
 const string &LibraryUser::getFirstName() const {

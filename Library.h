@@ -4,7 +4,7 @@
 #include <vector>
 #include "Book.cpp"
 
-class Library : public LibraryUser, public Book {
+class Library {
 public:
     Library();
     void addBook();
