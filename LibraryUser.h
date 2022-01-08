@@ -25,6 +25,7 @@ public:
     int getBYear() const;
 
 private:
+    int id;
     string firstName;
     string lastName;
     int day, month, year;

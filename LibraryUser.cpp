@@ -1,4 +1,5 @@
 #include "LibraryUser.h"
+#include <iostream>
 
 LibraryUser::LibraryUser() {
     registerUser();
@@ -28,17 +29,11 @@ void LibraryUser::registerUser() {
 
     cout << "Enter first name (only latin letters)" << endl;
     cin >> firstName;
-
+    checkUserName(firstName);
 
     cout << "Enter last name (only latin letters)" << endl;
     cin >> lastName;
-
-    if (!checkUserName(firstName)|| !checkUserName(lastName)) {
-        cout << "Enter first name (only latin letters)" << endl;
-        cin >> firstName;
-        cout << "Enter last name (only latin letters)" << endl;
-        cin >> lastName;
-    }
+    checkUserName(lastName);
 
     cout << "Please enter birth date (format: dd-mm-yyyy): ";
     char separator;
@@ -46,7 +41,10 @@ void LibraryUser::registerUser() {
 
     checkBirthDate();
 
-    cout << "The User: " << firstName << " " << lastName << " (" << day << '-'
+    //generate user id: random number out of 10 million numbers. 10 m is enough number for library readers.
+    id = rand() % 10000000;
+
+    cout << "The User: " << id << " " << firstName << " " << lastName << " (" << day << '-'
          << month << '-' << year << ") is now registered" << endl;
 }
 
@@ -56,7 +54,6 @@ void LibraryUser::checkBirthDate() {
     while (month < 0 || month > 12 || day < 1 || day > 31 || year < 1920) {
         cout << "Invalid birth date. Enter the date again" << endl;
         cout << "Format: dd-mm-yyyy." << endl;
-
         cin >> day >> separator >> month >> separator >> year;
     }
 }
@@ -66,9 +63,10 @@ bool LibraryUser::checkUserName(string name) {
         return !(isspace(ch) || isalpha(ch));
     };
 
-    if (any_of(name.begin(), name.end(), is_invalid)) {
+    while (any_of(name.begin(), name.end(), is_invalid)) {
         cout << "Invalid character in string." << endl;
         cout << "Please input only alphabets or space character." << endl;
+        cin >> name;
     }
 
 }
