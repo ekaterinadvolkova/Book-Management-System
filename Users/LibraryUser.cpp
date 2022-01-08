@@ -2,6 +2,7 @@
 #include <iostream>
 
 LibraryUser::LibraryUser() {
+    registerUser();
 }
 
 const string &LibraryUser::getFirstName() const {
@@ -40,9 +41,8 @@ void LibraryUser::registerUser() {
 
     checkBirthDate();
 
-    //generate user id: random number out of 10 million numbers.
-    // 10 million variations is enough  for library readers.
-    id = rand() % 10000000;
+//    generate user id
+    id = 1 + (rand() % 1000);
 
     cout << "The User: " << id << " " << firstName << " " << lastName << " (" << day << '-'
          << month << '-' << year << ") is now registered" << endl;
@@ -68,6 +68,10 @@ bool LibraryUser::checkUserName(string name) {
         cout << "Please input only alphabets or space character." << endl;
         cin >> name;
     }
+}
+
+int LibraryUser::getId() const {
+    return id;
 }
 
 

@@ -24,6 +24,8 @@ public:
 
     int getBYear() const;
 
+    int getId() const;
+
 private:
     int id;
     string firstName;

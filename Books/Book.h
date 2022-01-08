@@ -1,10 +1,12 @@
 #ifndef CPP_PROJECT_BOOK_H
 #define CPP_PROJECT_BOOK_H
 
-#include "LibraryUser.cpp"
+#include "../Users/LibraryUser.cpp"
 
 class Book {
 public:
+    Book();
+    void addBook();
 
 private:
     string name;
