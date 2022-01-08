@@ -41,7 +41,8 @@ void LibraryUser::registerUser() {
 
     checkBirthDate();
 
-    //generate user id: random number out of 10 million numbers. 10 m is enough number for library readers.
+    //generate user id: random number out of 10 million numbers.
+    // 10 million variations is enough  for library readers.
     id = rand() % 10000000;
 
     cout << "The User: " << id << " " << firstName << " " << lastName << " (" << day << '-'
@@ -68,7 +69,6 @@ bool LibraryUser::checkUserName(string name) {
         cout << "Please input only alphabets or space character." << endl;
         cin >> name;
     }
-
 }
 
 
