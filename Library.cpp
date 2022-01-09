@@ -1,8 +1,9 @@
 #include "Library.h"
 #include <fstream>
 
-#define file_users "../Users.txt"
-#define file_books "../Books.txt"
+#define file_users "../Users/Users.txt"
+#define file_books "../Books/Books.txt"
+
 
 Library::Library() {
 }
@@ -10,7 +11,7 @@ Library::Library() {
 void Library::addUser() {
     LibraryUser user = LibraryUser();
     user.registerUser();
-    int id = users.size()-1;
+    int id = users.size() - 1;
     if (id < 0) {
         id = 0;
     }
@@ -19,17 +20,17 @@ void Library::addUser() {
 }
 
 void Library::saveRecords() {
-    ofstream users_list, books_list;
-    users_list.open(file_users);
-    users_list << "Users list:" << endl;
-    cout << "New list for users is created" << endl;
-
-    books_list.open(file_books);
-    books_list << "Books list:" << endl;
-    cout << "New list for books is created" << endl;
-
-    users_list.close();
-    books_list.close();
+//    ofstream users_list, books_list;
+//    users_list.open(file_users);
+//    users_list << "Users list:" << endl;
+//    cout << "New list for users is created" << endl;
+//
+//    books_list.open(file_books);
+//    books_list << "Books list:" << endl;
+//    cout << "New list for books is created" << endl;
+//
+//    users_list.close();
+//    books_list.close();
 
 }
 
@@ -51,6 +52,15 @@ void Library::borrowBook() {
 }
 
 void Library::init() {
-    users.clear();
-    books.clear();
+    //clear files;
+    ofstream users_list, books_list;
+    books_list.open(file_books);
+    books_list << "" << endl;
+    books_list.close();
+
+
+    users_list.open(file_users);
+    users_list << "" << endl;
+    users_list.close();
+
 }
