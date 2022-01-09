@@ -21,7 +21,7 @@ public:
 
     void returnBook();
 
-    void print(vector<Book> books);
+    static void print(vector<Book> books);
 
     const vector<Book> &getBooks() const;
 
