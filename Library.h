@@ -21,15 +21,19 @@ public:
 
     void returnBook();
 
-    void printRecords();
+    void print(vector<Book> books);
+
+    const vector<Book> &getBooks() const;
+
+    const vector<Book> &getAvailableBooks() const;
+
+    const vector<Book> &getLoanedBooks() const;
 
 private:
     vector<Book> books;
     vector<Book> availableBooks;
     vector<Book> loanedBooks;
     vector<LibraryUser> users;
-
-
 };
 
 #endif //CPP_PROJECT_LIBRARY_H

@@ -10,10 +10,17 @@ public:
 
     void setId(int id);
 
+    const string &getName() const;
+
+    int getId() const;
+
+    const string &getAuthor() const;
+
     void addBook();
 
 private:
     string name;
+    string author;
     int id;
     LibraryUser borrower;
     int returnDate;

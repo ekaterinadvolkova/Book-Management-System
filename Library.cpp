@@ -1,8 +1,11 @@
 #include "Library.h"
 #include <fstream>
+#include <iomanip>
 
 #define file_users "../Users/Users.txt"
 #define file_books "../Books/Books.txt"
+
+using std::setw;
 
 
 Library::Library() {
@@ -37,9 +40,11 @@ void Library::saveRecords() {
 void Library::addBook() {
     Book book = Book();
     book.addBook();
-    int id = books.size() - 1;
-    if (id < 0) {
-        id = 0;
+    int id = books.size();
+    if (id = 0) {
+        id = 1;
+    } else {
+        id = books.size() + 1;
     }
     book.setId(id);
     books.push_back(book);
@@ -47,6 +52,8 @@ void Library::addBook() {
 }
 
 void Library::borrowBook() {
+
+    cout << "What book do you want to order? Type a number from the list" << endl;
 
 
 }
@@ -63,4 +70,26 @@ void Library::init() {
     users_list << "" << endl;
     users_list.close();
 
+}
+
+void Library::print(vector<Book> books) {
+    int width;
+    cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
+
+    for (int i = 0; i < books.size(); i++) {
+        cout << setw(4) << books[i].getId() << setw(20) << books[i].getName() << setw(20) << books[i].getAuthor()
+             << endl;
+    }
+}
+
+const vector<Book> &Library::getBooks() const {
+    return books;
+}
+
+const vector<Book> &Library::getAvailableBooks() const {
+    return availableBooks;
+}
+
+const vector<Book> &Library::getLoanedBooks() const {
+    return loanedBooks;
 }
