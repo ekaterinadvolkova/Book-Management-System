@@ -10,6 +10,11 @@ Library::Library() {
 void Library::addUser() {
     LibraryUser user = LibraryUser();
     user.registerUser();
+    int id = users.size()-1;
+    if (id < 0) {
+        id = 0;
+    }
+    user.setId(id);
     users.push_back(user);
 }
 
@@ -37,6 +42,7 @@ void Library::addBook() {
     }
     book.setId(id);
     books.push_back(book);
+    availableBooks.push_back(book);
 }
 
 void Library::borrowBook() {

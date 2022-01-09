@@ -26,6 +26,8 @@ public:
 
     int getId() const;
 
+    void setId(int id);
+
 private:
     int id;
     string firstName;

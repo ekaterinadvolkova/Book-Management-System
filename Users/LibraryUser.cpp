@@ -41,7 +41,7 @@ void LibraryUser::registerUser() {
     checkBirthDate();
 
 //    generate user id
-    id = 1 + (rand() % 1000);
+//    id = 1 + (rand() % 1000);
 
     cout << "The User: " << id << " " << firstName << " " << lastName << " (" << day << '-'
          << month << '-' << year << ") is now registered" << endl;
@@ -71,6 +71,10 @@ bool LibraryUser::checkUserName(string name) {
 
 int LibraryUser::getId() const {
     return id;
+}
+
+void LibraryUser::setId(int id) {
+    LibraryUser::id = id;
 }
 
 
