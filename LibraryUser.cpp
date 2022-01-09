@@ -71,5 +71,33 @@ void LibraryUser::setId(int id) {
     LibraryUser::id = id;
 }
 
+void LibraryUser::setFirstName(const string &firstName) {
+    LibraryUser::firstName = firstName;
+}
+
+void LibraryUser::setLastName(const string &lastName) {
+    LibraryUser::lastName = lastName;
+}
+
+void LibraryUser::setDay(int day) {
+    LibraryUser::day = day;
+}
+
+void LibraryUser::setMonth(int month) {
+    LibraryUser::month = month;
+}
+
+void LibraryUser::setYear(int year) {
+    LibraryUser::year = year;
+}
+
+LibraryUser::LibraryUser(string library, string libraryName, int bday, int bmonth, int byear) {
+    firstName = library;
+    lastName = libraryName;
+    day = bday;
+    month = bmonth;
+    year = byear;
+}
+
 
 

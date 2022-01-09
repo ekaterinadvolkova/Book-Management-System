@@ -41,3 +41,12 @@ void Book::setReturnDate() {
     returnDate = time(0) + 86400 * 14;
     cout << "Return the latest by " << asctime(localtime(&returnDate));
 }
+
+void Book::deleteBorrower() {
+    borrower;
+
+}
+
+const LibraryUser &Book::getBorrower() const {
+    return borrower;
+}

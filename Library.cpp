@@ -12,14 +12,11 @@ Library::Library() = default;
 void Library::addUser() {
     LibraryUser user = LibraryUser();
     user.registerUser();
-    int id = users.size();
-    if (id == 0) {
-        id = 1;
-    } else {
-        id = users.size() + 1;
-    }
+    int id = cards.size();
+
     user.setId(id);
-    users.push_back(user);
+    LibraryCard * card = new LibraryCard(user);
+    cards.push_back(*card);
     cout << "The User: " << user.getId() << " " << user.getFirstName() << " " << user.getLastName() << " ("
          << user.getBDay()
          << '-'
@@ -44,17 +41,39 @@ void Library::saveRecords() {
 void Library::addBook() {
     Book book = Book();
     book.addBook();
-    int id = books.size();
-
-    if (id == 0) {
-        id = 1;
-    } else {
-        id = books.size() + 1;
-    }
-
+    int id = books.size() + 1;
     book.setId(id);
     books.push_back(book);
-    availableBooks.push_back(book);
+}
+
+void Library::returnBook() {
+    cout << "What is your reader id" << endl;
+    int reader_id;
+    cin >> reader_id;
+
+    //validate if the user exists
+    if (validateUser(reader_id)) {
+        cout << "What book do you want to return?" << endl;
+        cout << "Type book id" << endl;
+        int id_book;
+        cin >> id_book;
+
+        //Book is returned to Library, so the book user = library (defined in init())
+
+        auto is_even = [](int i){ return i%2 == 0; };
+
+        auto result3 = std::find_if(std::make_reverse_iterator(cards.end()), std::make_reverse_iterator(cards.begin()), is_even);
+
+        loanedBooks[id_book - 1].setBorrower(users[0]);
+        availableBooks[id_book - 1].setReturnDate();
+
+        //update the lists after the loan is complete
+        availableBooks.push_back(loanedBooks[id_book - 1]);
+        loanedBooks.erase(next(loanedBooks.begin(), id_book - 1), next(loanedBooks.begin(), id_book));
+
+        cout << "Book is returned" << endl;
+    }
+
 }
 
 void Library::borrowBook() {
@@ -73,11 +92,13 @@ void Library::borrowBook() {
         cin >> id_book;
 
         //add return date and borrower to a book
-        availableBooks[id_book - 1].setBorrower(users[reader_id - 1]);
+        availableBooks[id_book - 1].setBorrower(users[reader_id]);
+
+
         availableBooks[id_book - 1].setReturnDate();
 
         //update the lists after the loan is complete
-        loanedBooks.push_back(books[id_book - 1]);
+        loanedBooks.push_back(availableBooks[id_book - 1]);
         availableBooks.erase(next(availableBooks.begin(), id_book - 1), next(availableBooks.begin(), id_book));
     }
 }
@@ -89,11 +110,9 @@ void Library::init() {
     books_list << "" << endl;
     books_list.close();
 
-
     users_list.open(file_users);
     users_list << "" << endl;
     users_list.close();
-
 }
 
 void Library::print(vector<Book> books) {
@@ -125,10 +144,10 @@ bool Library::validateUser(int id) {
         LibraryUser user = users.at(id - 1);
         cout << "The user id:" << user.getId() << " is verified" << endl;
         return true;
-    }
-    catch (const out_of_range &ex) {
-        cout << "The User is not found"  << endl;
+    } catch (const out_of_range &ex) {
+        cout << "The User is not found" << endl;
     }
 
     return false;
 }
+

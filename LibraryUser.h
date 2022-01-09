@@ -8,6 +8,8 @@ class LibraryUser {
 public:
     LibraryUser();
 
+    LibraryUser(string library,string libraryName, int day, int month, int year);
+
     void registerUser();
 
     void checkBirthDate();
@@ -23,6 +25,16 @@ public:
     int getBMonth() const;
 
     int getBYear() const;
+
+    void setFirstName(const string &firstName);
+
+    void setLastName(const string &lastName);
+
+    void setDay(int day);
+
+    void setMonth(int month);
+
+    void setYear(int year);
 
     int getId() const;
 

@@ -1,7 +1,7 @@
 #ifndef CPP_PROJECT_BOOK_H
 #define CPP_PROJECT_BOOK_H
 
-#include "../Users/LibraryUser.cpp"
+#include "LibraryUser.cpp"
 #include "ctime"
 
 class Book {
@@ -24,12 +24,16 @@ public:
 
     void setReturnDate();
 
+    void deleteReturnDate();
+
+    void deleteBorrower();
+
+    const LibraryUser &getBorrower() const;
+
 private:
     string name;
     string author;
     int id;
-    LibraryUser borrower;
-    time_t returnDate;
 };
 
 #endif //CPP_PROJECT_BOOK_H

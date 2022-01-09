@@ -2,7 +2,8 @@
 #define CPP_PROJECT_LIBRARY_H
 
 #include <vector>
-#include "Books/Book.cpp"
+#include "Book.cpp"
+#include "LibraryCard.h"
 
 
 class Library {
@@ -33,9 +34,7 @@ public:
 
 private:
     vector<Book> books;
-    vector<Book> availableBooks;
-    vector<Book> loanedBooks;
-    vector<LibraryUser> users;
+    vector<LibraryCard> cards;
 };
 
 #endif //CPP_PROJECT_LIBRARY_H
