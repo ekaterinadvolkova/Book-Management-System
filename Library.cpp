@@ -51,6 +51,7 @@ void Library::addBook() {
 void Library::borrowBook() {
 
     cout << "What book do you want to order? Type book id from the list" << endl;
+    cout << "" << endl;
     print(getAvailableBooks());
     int id_book;
     cin >> id_book;
