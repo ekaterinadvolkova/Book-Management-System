@@ -39,12 +39,6 @@ void LibraryUser::registerUser() {
     cin >> day >> separator >> month >> separator >> year;
 
     checkBirthDate();
-
-//    generate user id
-//    id = 1 + (rand() % 1000);
-
-    cout << "The User: " << id << " " << firstName << " " << lastName << " (" << day << '-'
-         << month << '-' << year << ") is now registered" << endl;
 }
 
 void LibraryUser::checkBirthDate() {

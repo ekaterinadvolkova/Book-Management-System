@@ -10,6 +10,8 @@ public:
 
     void setId(int id);
 
+    void setBorrower(const LibraryUser &borrower);
+
     const string &getName() const;
 
     int getId() const;

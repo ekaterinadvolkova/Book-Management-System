@@ -19,6 +19,8 @@ public:
 
     void borrowBook();
 
+    bool validateUser(int id);
+
     void returnBook();
 
     static void print(vector<Book> books);

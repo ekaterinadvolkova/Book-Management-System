@@ -1,7 +1,6 @@
 #include "Book.h"
 
-Book::Book() {
-}
+Book::Book() = default;
 
 void Book::addBook() {
     cout << "Enter book name (No spaces. 15 symbols max)" << endl;
@@ -10,11 +9,11 @@ void Book::addBook() {
     cout << "Enter Author (No spaces. 15 symbols max)" << endl;
     cin >> author;
 
-    //add checking that teh length is 15 symbols
+    //add checking that length is 15 symbols
 }
 
-void Book::setId(int id) {
-    Book::id = id;
+void Book::setId(int book_id) {
+    Book::id = book_id;
 }
 
 const string &Book::getName() const {
@@ -27,4 +26,8 @@ int Book::getId() const {
 
 const string &Book::getAuthor() const {
     return author;
+}
+
+void Book::setBorrower(const LibraryUser &borrower) {
+    Book::borrower = borrower;
 }

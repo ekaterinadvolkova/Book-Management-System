@@ -20,6 +20,10 @@ void Library::addUser() {
     }
     user.setId(id);
     users.push_back(user);
+    cout << "The User: " << user.getId() << " " << user.getFirstName() << " " << user.getLastName() << " ("
+         << user.getBDay()
+         << '-'
+         << user.getBMonth() << '-' << user.getBMonth() << ") is now registered" << endl;
 }
 
 void Library::saveRecords() {
@@ -54,17 +58,27 @@ void Library::addBook() {
 }
 
 void Library::borrowBook() {
+    cout << "What is your reader id" << endl;
+    int reader_id;
+    cin >> reader_id;
 
-    cout << "What book do you want to order? Type book id from the list" << endl;
-    cout << "" << endl;
-    print(getAvailableBooks());
+    //validate if the user exists
+    if (validateUser(reader_id)) {
+        cout << "What book do you want to order? Type book id from the list" << endl;
+        cout << "" << endl;
+        print(getAvailableBooks());
 
-    cout << "Type book id from the list" << endl;
-    int id_book;
-    cin >> id_book;
-    loanedBooks.push_back(books[id_book - 1]);
-    availableBooks.erase(next(availableBooks.begin(), id_book-1), next(availableBooks.begin(), id_book));
+        cout << "Type book id from the list" << endl;
+        int id_book;
+        cin >> id_book;
 
+        //add return date and borrower to a book
+        availableBooks[id_book - 1].setBorrower(users[reader_id - 1]);
+
+        //update the lists after the loan is complete
+        loanedBooks.push_back(books[id_book - 1]);
+        availableBooks.erase(next(availableBooks.begin(), id_book - 1), next(availableBooks.begin(), id_book));
+    }
 }
 
 void Library::init() {
@@ -101,4 +115,19 @@ const vector<Book> &Library::getAvailableBooks() const {
 
 const vector<Book> &Library::getLoanedBooks() const {
     return loanedBooks;
+}
+
+bool Library::validateUser(int id) {
+
+// Accessing out of range element using at() will throw out_of_range exception
+    try {
+        LibraryUser user = users.at(id - 1);
+        cout << "The user id:" << user.getId() << " is verified" << endl;
+        return true;
+    }
+    catch (const out_of_range &ex) {
+        cout << "out_of_range Exception Caught :: " << ex.what() << std::endl;
+    }
+
+    return false;
 }
