@@ -74,6 +74,7 @@ void Library::borrowBook() {
 
         //add return date and borrower to a book
         availableBooks[id_book - 1].setBorrower(users[reader_id - 1]);
+        availableBooks[id_book - 1].setReturnDate();
 
         //update the lists after the loan is complete
         loanedBooks.push_back(books[id_book - 1]);
@@ -126,7 +127,7 @@ bool Library::validateUser(int id) {
         return true;
     }
     catch (const out_of_range &ex) {
-        cout << "out_of_range Exception Caught :: " << ex.what() << std::endl;
+        cout << "The User is not found"  << endl;
     }
 
     return false;

@@ -20,12 +20,16 @@ public:
 
     void addBook();
 
+    time_t getReturnDate() const;
+
+    void setReturnDate();
+
 private:
     string name;
     string author;
     int id;
     LibraryUser borrower;
-    int returnDate;
+    time_t returnDate;
 };
 
 #endif //CPP_PROJECT_BOOK_H

@@ -31,3 +31,13 @@ const string &Book::getAuthor() const {
 void Book::setBorrower(const LibraryUser &borrower) {
     Book::borrower = borrower;
 }
+
+time_t Book::getReturnDate() const {
+    return returnDate;
+}
+
+void Book::setReturnDate() {
+//14 days after today is return date
+    returnDate = time(0) + 86400 * 14;
+    cout << "Return the latest by " << asctime(localtime(&returnDate));
+}
