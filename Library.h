@@ -4,6 +4,7 @@
 #include <vector>
 #include "Books/Book.cpp"
 
+
 class Library {
 public:
     Library();
@@ -17,6 +18,8 @@ public:
 private:
     vector<Book> books;
     vector<LibraryUser> users;
+
+
 };
 
 #endif //CPP_PROJECT_LIBRARY_H
