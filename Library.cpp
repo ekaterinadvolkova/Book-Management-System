@@ -11,6 +11,7 @@ Library::Library() {
 
 void Library::addUser() {
     LibraryUser user = LibraryUser();
+    user.registerUser();
     users.push_back(user);
 }
 
@@ -27,4 +28,10 @@ void Library::saveRecords() {
     users_list.close();
     books_list.close();
 
+}
+
+void Library::addBook() {
+    Book book = Book();
+    book.addBook();
+    books.push_back(book);
 }

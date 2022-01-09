@@ -1,9 +1,10 @@
 #include "Book.h"
 
 Book::Book() {
-    addBook();
 }
 
 void Book::addBook() {
-
+    cout << "Enter book name" << endl;
+    cin >> name;
+    id = 10 + (rand() % 10000);
 }
