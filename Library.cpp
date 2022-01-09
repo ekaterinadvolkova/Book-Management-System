@@ -5,8 +5,6 @@
 #define file_books "../Books.txt"
 
 Library::Library() {
-    users.clear();
-    books.clear();
 }
 
 void Library::addUser() {
@@ -34,4 +32,14 @@ void Library::addBook() {
     Book book = Book();
     book.addBook();
     books.push_back(book);
+}
+
+void Library::borrowBook() {
+
+
+}
+
+void Library::init() {
+    users.clear();
+    books.clear();
 }
