@@ -31,6 +31,11 @@ void Library::saveRecords() {
 void Library::addBook() {
     Book book = Book();
     book.addBook();
+    int id = books.size() - 1;
+    if (id < 0) {
+        id = 0;
+    }
+    book.setId(id);
     books.push_back(book);
 }
 

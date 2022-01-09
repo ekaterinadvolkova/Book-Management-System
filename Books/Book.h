@@ -8,6 +8,8 @@ class Book {
 public:
     Book();
 
+    void setId(int id);
+
     void addBook();
 
 private:
