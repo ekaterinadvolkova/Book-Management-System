@@ -41,11 +41,8 @@ void Library::addBook() {
     Book book = Book();
     book.addBook();
     int id = books.size();
-    if (id = 0) {
-        id = 1;
-    } else {
-        id = books.size() + 1;
-    }
+    id = 0;
+    id = id ? 1 : books.size() + 1;
     book.setId(id);
     books.push_back(book);
     availableBooks.push_back(book);
@@ -53,8 +50,12 @@ void Library::addBook() {
 
 void Library::borrowBook() {
 
-    cout << "What book do you want to order? Type a number from the list" << endl;
-
+    cout << "What book do you want to order? Type book id from the list" << endl;
+    print(getAvailableBooks());
+    int id_book;
+    cin >> id_book;
+    loanedBooks.push_back(books[id_book - 1]);
+//    loanedBooks.erase(remove(loanedBooks.begin(), loanedBooks.end(), loanedBooks[id_book-1]), loanedBooks.end());
 
 }
 
@@ -73,7 +74,7 @@ void Library::init() {
 }
 
 void Library::print(vector<Book> books) {
-    int width;
+
     cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
 
     for (int i = 0; i < books.size(); i++) {
