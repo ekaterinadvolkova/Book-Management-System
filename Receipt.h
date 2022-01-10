@@ -14,12 +14,13 @@ public:
 
     void printReturnDate() const;
 
-    const Book& getBook() const;
+    const Book &getBook() const;
 
     bool getIsReturned() const;
+
 private:
     Book book;
-    std::chrono::system_clock::time_point returnDate;
+    chrono::system_clock::time_point returnDate;
     bool isReturned;
 };
 

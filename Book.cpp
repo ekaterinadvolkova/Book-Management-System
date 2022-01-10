@@ -27,16 +27,17 @@ void Book::registerBook() {
     cin >> author;
 }
 
-void Book::readTxt(istream is) {
+void Book::readTxt(ifstream &is {
     is >> id;
     is >> name;
     is >> author;
 }
 
-void Book::writeTxt(ostream os) {
-    os << id;
-    os << name;
-    os << author;
+void Book::writeTxt(ostream &os) const {
+    os << setw(4) << id;
+    os << setw(20) << name;
+    os << setw(20) << author;
+    os << setw(20) << endl;
 }
 
 

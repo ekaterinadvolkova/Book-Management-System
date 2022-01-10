@@ -18,7 +18,8 @@ public:
 
     const string &getAuthor() const;
 
-    void readTxt(istream is);
+    void readTxt(ifstream & is);
+
     void writeTxt(ostream os);
 
 private:

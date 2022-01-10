@@ -143,7 +143,8 @@ void Library::saveToFile() {
     ofstream users_list, books_list;
     users_list.open(file_users);
     users_list << "Users list:" << endl;
-    users_list << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday" << endl;
+    users_list << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday"
+               << endl;
     for (int i = 0; i < libraryCards.size(); i++) {
         libraryCards[i].getUser().writeTxt(users_list);
     }
@@ -151,8 +152,10 @@ void Library::saveToFile() {
 }
 
 void Library::readFromFile() {
+
+    //Read from users file
     libraryCards.clear();
-    ifstream users_list;
+    ifstream users_list, books_list;
     users_list.open(file_users);
 
     users_list.ignore(1024, '\n');
@@ -166,5 +169,24 @@ void Library::readFromFile() {
         LibraryCard libraryCard = LibraryCard(libraryUser);
 
         libraryCards.push_back(libraryCard);
+
+        //Read from books file
+        books.clear();
+        users_list.open(file_books);
+        books_list.ignore(1024, '\n');
+        books_list.ignore(1024, '\n');
+
+        while (!books_list.eof()) {
+            Book book = Book();
+            book.readTxt(books_list);
+            //set book id
+            book.setId(books.size() + 1);
+            books.push_back(book);
+        }
+
+
     }
+    users_list.close();
+
+
 }

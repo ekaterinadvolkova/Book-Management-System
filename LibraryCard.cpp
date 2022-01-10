@@ -27,7 +27,7 @@ void LibraryCard::setBookReturned(int bookId) {
             }
     );
 
-    // Если найден элемент, то устанавливаем возврат
+    // If the element is fount, the book can be returned
     if (receipt != receipts.rend()) {
         receipt->setIsReturned(true);
     }
