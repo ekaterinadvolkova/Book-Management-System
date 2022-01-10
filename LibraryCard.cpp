@@ -11,3 +11,7 @@ void LibraryCard::addReceipt(Book book) {
     receipts.push_back(rec);
 
 }
+
+const vector<Receipt> &LibraryCard::getReceipts() const {
+    return receipts;
+}

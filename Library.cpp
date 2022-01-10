@@ -52,7 +52,10 @@ void Library::borrowBook() {
 
     libraryCards[user_id - 1].addReceipt(books[book_id - 1]);
 
+
     cout << "Book " << books[book_id - 1].getName() << " is loaned. Please, return by " << endl;
+
+    libraryCards[user_id - 1].getReceipts().end()->printReturnDate();
 }
 
 void Library::printBooks() {

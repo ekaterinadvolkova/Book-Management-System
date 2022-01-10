@@ -9,3 +9,7 @@ Receipt::Receipt(Book book_) {
     isReturned = false;
     returnDate = time(0) + 86400 * 14;
 }
+
+void Receipt::printReturnDate() const {
+    cout << "Please, return by " << asctime(localtime(&returnDate)) << endl;
+}

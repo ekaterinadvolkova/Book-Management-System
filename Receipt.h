@@ -12,6 +12,8 @@ public:
 
     void setIsReturned(bool isReturned);
 
+    void printReturnDate() const;
+
 private:
     Book book;
     time_t returnDate;

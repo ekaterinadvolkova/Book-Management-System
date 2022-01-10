@@ -14,6 +14,8 @@ public:
 
     void addReceipt(Book book);
 
+    const vector<Receipt> &getReceipts() const;
+
 
 private:
     LibraryUser user;
