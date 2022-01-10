@@ -143,15 +143,28 @@ void Library::saveToFile() {
     ofstream users_list, books_list;
     users_list.open(file_users);
     users_list << "Users list:" << endl;
-
-    users_list << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday"
-               << endl;
+    users_list << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday" << endl;
     for (int i = 0; i < libraryCards.size(); i++) {
-        users_list << setw(4) << libraryCards[i].getUser().getId() << setw(20)
-                   << libraryCards[i].getUser().getFirstName() << setw(20)
-                   << libraryCards[i].getUser().getLastName() << setw(4) << libraryCards[i].getUser().getBDay() << "-"
-                   << libraryCards[i].getUser().getBMonth() << "-" << libraryCards[i].getUser().getBYear() << endl;
+        libraryCards[i].getUser().writeTxt(users_list);
     }
+    users_list.close();
+}
 
+void Library::readFromFile() {
+    libraryCards.clear();
+    ifstream users_list;
+    users_list.open(file_users);
 
+    users_list.ignore(1024, '\n');
+    users_list.ignore(1024, '\n');
+    while (!users_list.eof()) {
+        LibraryUser libraryUser = LibraryUser();
+        libraryUser.readTxt(users_list);
+
+        //set user id
+        libraryUser.setId(libraryCards.size() + 1);
+        LibraryCard libraryCard = LibraryCard(libraryUser);
+
+        libraryCards.push_back(libraryCard);
+    }
 }

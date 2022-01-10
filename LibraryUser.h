@@ -1,6 +1,7 @@
 #ifndef CPP_PROJECT_LIBRARYUSER_H
 #define CPP_PROJECT_LIBRARYUSER_H
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -37,6 +38,9 @@ public:
     int getId() const;
 
     void setId(int id);
+
+    void readTxt(ifstream & is);
+    void writeTxt(ofstream & os) const;
 
 private:
     int id;

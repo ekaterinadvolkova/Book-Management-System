@@ -33,6 +33,7 @@ public:
 
     void saveToFile();
 
+    void readFromFile();
 private:
     vector<Book> books;
     vector<LibraryCard> libraryCards;

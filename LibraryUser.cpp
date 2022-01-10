@@ -1,5 +1,9 @@
 #include "LibraryUser.h"
 #include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using std::setw;
 
 LibraryUser::LibraryUser() {
 }
@@ -94,5 +98,20 @@ void LibraryUser::setYear(int year) {
     LibraryUser::year = year;
 }
 
+void LibraryUser::readTxt(ifstream & is) {
+    char separator;
+    is >> id;
+    is >> firstName;
+    is >> lastName;
+    is >> day >> separator >> month >> separator >> year;
+}
+
+void LibraryUser::writeTxt(ofstream & os) const {
+    os << setw(4) << getId();
+    os << setw(20) << getFirstName();
+    os << setw(20) << getLastName();
+    os << setw(4) << getBDay() << "-" << getBMonth() << "-" << getBYear();
+    os << endl;
+}
 
 

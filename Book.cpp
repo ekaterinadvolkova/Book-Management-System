@@ -27,6 +27,18 @@ void Book::registerBook() {
     cin >> author;
 }
 
+void Book::readTxt(istream is) {
+    is >> id;
+    is >> name;
+    is >> author;
+}
+
+void Book::writeTxt(ostream os) {
+    os << id;
+    os << name;
+    os << author;
+}
+
 
 
 
