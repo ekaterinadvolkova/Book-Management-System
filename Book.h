@@ -10,8 +10,6 @@ public:
 
     void setId(int id);
 
-    void setBorrower(const LibraryUser &borrower);
-
     const string &getName() const;
 
     int getId() const;
@@ -19,16 +17,6 @@ public:
     const string &getAuthor() const;
 
     void addBook();
-
-    time_t getReturnDate() const;
-
-    void setReturnDate();
-
-    void deleteReturnDate();
-
-    void deleteBorrower();
-
-    const LibraryUser &getBorrower() const;
 
 private:
     string name;

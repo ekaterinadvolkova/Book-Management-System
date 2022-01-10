@@ -18,23 +18,26 @@ public:
 
     void saveRecords();
 
+    void readRecords();
+
     void borrowBook();
 
-    bool validateUser(int id);
+//    bool validateUser(int id);
+
+    bool validateCard(int id);
 
     void returnBook();
 
     static void print(vector<Book> books);
 
-    const vector<Book> &getBooks() const;
-
-    const vector<Book> &getAvailableBooks() const;
-
-    const vector<Book> &getLoanedBooks() const;
+    //    const vector<Book> &getAvailableBooks() const;
+//
+//    const vector<Book> &getLoanedBooks() const;
 
 private:
     vector<Book> books;
     vector<LibraryCard> cards;
+
 };
 
 #endif //CPP_PROJECT_LIBRARY_H

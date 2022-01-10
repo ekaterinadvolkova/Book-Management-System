@@ -8,9 +8,10 @@
 class LibraryCard {
 public:
     LibraryCard(LibraryUser user);
+
 private:
     LibraryUser user;
-    std::vector<Receipt> receipts;
+    vector<Receipt> receipts;
 };
 
 

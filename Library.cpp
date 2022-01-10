@@ -15,7 +15,7 @@ void Library::addUser() {
     int id = cards.size();
 
     user.setId(id);
-    LibraryCard * card = new LibraryCard(user);
+    LibraryCard *card = new LibraryCard(user);
     cards.push_back(*card);
     cout << "The User: " << user.getId() << " " << user.getFirstName() << " " << user.getLastName() << " ("
          << user.getBDay()
@@ -58,18 +58,12 @@ void Library::returnBook() {
         int id_book;
         cin >> id_book;
 
-        //Book is returned to Library, so the book user = library (defined in init())
+        auto is_even = [](int i) { return i % 2 == 0; };
 
-        auto is_even = [](int i){ return i%2 == 0; };
-
-        auto result3 = std::find_if(std::make_reverse_iterator(cards.end()), std::make_reverse_iterator(cards.begin()), is_even);
-
-        loanedBooks[id_book - 1].setBorrower(users[0]);
-        availableBooks[id_book - 1].setReturnDate();
+        auto result3 = find_if(make_reverse_iterator(cards.end()), make_reverse_iterator(cards.begin()), is_even);
 
         //update the lists after the loan is complete
-        availableBooks.push_back(loanedBooks[id_book - 1]);
-        loanedBooks.erase(next(loanedBooks.begin(), id_book - 1), next(loanedBooks.begin(), id_book));
+
 
         cout << "Book is returned" << endl;
     }
@@ -85,21 +79,16 @@ void Library::borrowBook() {
     if (validateUser(reader_id)) {
         cout << "What book do you want to order? Type book id from the list" << endl;
         cout << "" << endl;
-        print(getAvailableBooks());
+//        print(getAvailableBooks());
 
         cout << "Type book id from the list" << endl;
         int id_book;
         cin >> id_book;
 
         //add return date and borrower to a book
-        availableBooks[id_book - 1].setBorrower(users[reader_id]);
-
-
-        availableBooks[id_book - 1].setReturnDate();
 
         //update the lists after the loan is complete
-        loanedBooks.push_back(availableBooks[id_book - 1]);
-        availableBooks.erase(next(availableBooks.begin(), id_book - 1), next(availableBooks.begin(), id_book));
+
     }
 }
 
@@ -125,29 +114,26 @@ void Library::print(vector<Book> books) {
     }
 }
 
-const vector<Book> &Library::getBooks() const {
-    return books;
-}
-
-const vector<Book> &Library::getAvailableBooks() const {
-    return availableBooks;
-}
-
-const vector<Book> &Library::getLoanedBooks() const {
-    return loanedBooks;
-}
-
-bool Library::validateUser(int id) {
-
-// Accessing out of range element using at() will throw out_of_range exception
-    try {
-        LibraryUser user = users.at(id - 1);
-        cout << "The user id:" << user.getId() << " is verified" << endl;
-        return true;
-    } catch (const out_of_range &ex) {
-        cout << "The User is not found" << endl;
-    }
+bool Library::validateCard(int id) {
 
     return false;
 }
+
+void Library::readRecords() {
+
+}
+
+
+//bool Library::validateUser(int id) {
+//
+//// Accessing out of range element using at() will throw out_of_range exception
+//    try {
+//        LibraryUser user = users.at(id - 1);
+//        cout << "The user id:" << user.getId() << " is verified" << endl;
+//        return true;
+//    } catch (const out_of_range &ex) {
+//        cout << "The User is not found" << endl;
+//    }
+//    return false;
+//}
 
