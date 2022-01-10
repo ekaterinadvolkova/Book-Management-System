@@ -2,40 +2,40 @@
 #define CPP_PROJECT_LIBRARY_H
 
 #include <vector>
-#include "Books/Book.cpp"
-
+#include "Book.cpp"
+#include <list>
+#include "LibraryCard.cpp"
 
 class Library {
+
 public:
     Library();
 
     void init();
 
-    void addBook();
-
     void addUser();
 
-    void saveRecords();
+    void addBook();
 
     void borrowBook();
 
-    bool validateUser(int id);
-
     void returnBook();
 
-    static void print(vector<Book> books);
+    void printBooks();
 
-    const vector<Book> &getBooks() const;
+    void printLoanedBooks();
 
-    const vector<Book> &getAvailableBooks() const;
+    void printAvailableBooks();
 
-    const vector<Book> &getLoanedBooks() const;
+    const vector<Book> & getLoanedBooks();
 
+    const vector<Book> & getAvailableBooks();
+
+    void saveToFile();
+
+    void readFromFile();
 private:
     vector<Book> books;
-    vector<Book> availableBooks;
-    vector<Book> loanedBooks;
-    vector<LibraryUser> users;
+    vector<LibraryCard> libraryCards;
 };
-
 #endif //CPP_PROJECT_LIBRARY_H

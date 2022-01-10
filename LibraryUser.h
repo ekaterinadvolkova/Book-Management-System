@@ -1,6 +1,8 @@
 #ifndef CPP_PROJECT_LIBRARYUSER_H
 #define CPP_PROJECT_LIBRARYUSER_H
+
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -12,7 +14,7 @@ public:
 
     void checkBirthDate();
 
-    static bool checkUserName(string name);
+    void checkUserName(string name);
 
     const string &getFirstName() const;
 
@@ -24,9 +26,23 @@ public:
 
     int getBYear() const;
 
+    void setFirstName(const string &firstName);
+
+    void setLastName(const string &lastName);
+
+    void setDay(int day);
+
+    void setMonth(int month);
+
+    void setYear(int year);
+
     int getId() const;
 
     void setId(int id);
+
+    bool readTxt(ifstream & is);
+
+    void writeTxt(ofstream & os) const;
 
 private:
     int id;

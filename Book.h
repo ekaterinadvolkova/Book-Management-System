@@ -1,8 +1,11 @@
 #ifndef CPP_PROJECT_BOOK_H
 #define CPP_PROJECT_BOOK_H
 
-#include "../Users/LibraryUser.cpp"
+#include "LibraryUser.cpp"
 #include "ctime"
+
+#include <fstream>
+#include <iomanip>
 
 class Book {
 public:
@@ -10,7 +13,7 @@ public:
 
     void setId(int id);
 
-    void setBorrower(const LibraryUser &borrower);
+    void registerBook();
 
     const string &getName() const;
 
@@ -18,14 +21,14 @@ public:
 
     const string &getAuthor() const;
 
-    void addBook();
+    bool readTxt(ifstream & is);
+
+    void writeTxt(ostream & os) const;
 
 private:
     string name;
     string author;
     int id;
-    LibraryUser borrower;
-    int returnDate;
 };
 
 #endif //CPP_PROJECT_BOOK_H
