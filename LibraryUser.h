@@ -8,8 +8,6 @@ class LibraryUser {
 public:
     LibraryUser();
 
-
-
     void registerUser();
 
     void checkBirthDate();

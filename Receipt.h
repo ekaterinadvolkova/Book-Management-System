@@ -5,6 +5,10 @@
 #include "Book.h"
 
 class Receipt {
+public:
+    Receipt();
+
+private:
     Book book;
     time_t returnDate;
     bool isReturned;

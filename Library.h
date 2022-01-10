@@ -18,7 +18,6 @@ public:
 
 private:
     vector<Book> books;
-
-};
+    vector<LibraryCard> libraryCards;
 
 #endif //CPP_PROJECT_LIBRARY_H
