@@ -6,9 +6,6 @@
 #include "LibraryUser.h"
 
 class LibraryCard {
-
-    vector<Receipt> receipts;
-
 public:
     LibraryCard(LibraryUser libraryUseruser);
 
@@ -16,10 +13,12 @@ public:
 
     const vector<Receipt> &getReceipts() const;
 
+    void setBookReturned(int bookId);
+
     void deleteReceipt(Book book);
 
-
 private:
+    vector<Receipt> receipts;
     LibraryUser user;
 };
 

@@ -17,3 +17,18 @@ const vector<Receipt> &LibraryCard::getReceipts() const {
 void LibraryCard::deleteReceipt(Book book) {
 
 }
+
+void LibraryCard::setBookReturned(int bookId) {
+    auto receipt = find_if(
+            receipts.rbegin(),
+            receipts.rend(),
+            [bookId](const Receipt & receipt) {
+                return receipt.getBook().getId() == bookId;
+            }
+    );
+
+    // Если найден элемент, то устанавливаем возврат
+    if (receipt != receipts.rend()) {
+        receipt->setIsReturned(true);
+    }
+}

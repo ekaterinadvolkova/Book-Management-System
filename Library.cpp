@@ -63,31 +63,11 @@ void Library::returnBook() {
     int book_id;
     cin >> book_id;
 
-    Book returnBook = books[book_id - 1];
-
     cout << "Enter user id" << endl;
     int user_id;
     cin >> user_id;
 
-    vector<Receipt> vec = libraryCards[user_id - 1].getReceipts();
-
-
-    auto isReceiptedBook = [book_id](Receipt receipt) {
-        return receipt.getBook().getId() == book_id;
-    };
-
-    auto receipts = libraryCards[user_id - 1].getReceipts();
-    auto receipt = find_if(
-            receipts.rbegin(),
-            receipts.rend(),
-            isReceiptedBook
-    );
-
-    // Если найден элемент, то устанавливаем возврат
-    if (receipt != receipts.rend()) {
-        receipt->setIsReturned(true);
-    }
-
+    libraryCards[user_id - 1].setBookReturned(book_id);
 }
 
 const vector<Book> &Library::getLoanedBooks() {
@@ -133,6 +113,26 @@ void Library::printBooks() {
     cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
 
     for (auto &book: books) {
+        cout << setw(4) << book.getId() << setw(20) << book.getName() << setw(20) << book.getAuthor()
+             << endl;
+    }
+}
+
+void Library::printLoanedBooks() {
+    cout << "Loaned books" << endl;
+    cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
+
+    for (auto &book: getLoanedBooks()) {
+        cout << setw(4) << book.getId() << setw(20) << book.getName() << setw(20) << book.getAuthor()
+             << endl;
+    }
+}
+
+void Library::printAvailableBooks() {
+    cout << "Available books" << endl;
+    cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
+
+    for (auto &book: getAvailableBooks()) {
         cout << setw(4) << book.getId() << setw(20) << book.getName() << setw(20) << book.getAuthor()
              << endl;
     }

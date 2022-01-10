@@ -23,6 +23,10 @@ public:
 
     void printBooks();
 
+    void printLoanedBooks();
+
+    void printAvailableBooks();
+
     const vector<Book> & getLoanedBooks();
 
     const vector<Book> & getAvailableBooks();
