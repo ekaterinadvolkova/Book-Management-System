@@ -52,10 +52,85 @@ void Library::borrowBook() {
 
     libraryCards[user_id - 1].addReceipt(books[book_id - 1]);
 
-
     cout << "Book " << books[book_id - 1].getName() << " is now loaned." << endl;
 
     libraryCards[user_id - 1].getReceipts().end()->printReturnDate();
+}
+
+
+void Library::returnBook() {
+    cout << "Enter book id" << endl;
+    int book_id;
+    cin >> book_id;
+
+    Book returnBook = books[book_id - 1];
+
+    cout << "Enter user id" << endl;
+    int user_id;
+    cin >> user_id;
+
+    vector<Receipt> vec = libraryCards[user_id - 1].getReceipts();
+
+
+    auto isReceiptedBook = [book_id](Receipt receipt) {
+        return receipt.getBook().getId() == book_id;
+    };
+
+    auto receipts = libraryCards[user_id - 1].getReceipts();
+    auto receipt = std::find_if(
+            receipts.rbegin(),
+            receipts.rend(),
+            isReceiptedBook
+    );
+
+    // Если найден элемент, то устанавливаем возврат
+    if (receipt != receipts.rend()) {
+        receipt->setIsReturned(true);
+    }
+
+    //if (find(vec.begin(), vec.end(), returnBook) != vec.end()) {
+
+//        libraryCards[user_id - 1].getReceipts().erase(rece.begin(), );
+//        loanedBooks.erase(next(loanedBooks.begin(), id_book - 1), next(loanedBooks.begin(), id_book));
+    //}
+}
+
+const vector<Book> & Library::getLoanedBooks() {
+    auto * loanedBooks = new vector<Book>();
+
+    std::for_each(
+            libraryCards.begin(),
+            libraryCards.end(),
+            [&loanedBooks](const LibraryCard& card) {
+                std::for_each(
+                        card.getReceipts().begin(),
+                        card.getReceipts().end(),
+                        [&loanedBooks](const Receipt& receipt) {
+                            if (!receipt.getIsReturned()) {
+                                loanedBooks->push_back(receipt.getBook());
+                            }
+                        });
+            }
+            );
+
+    std::sort(loanedBooks->begin(), loanedBooks->end(), [](const Book & book1, const Book & book2) {
+        return book1.getId() < book2.getId();
+    });
+
+    return *loanedBooks;
+}
+
+const vector<Book> & Library::getAvailableBooks() {
+    const vector<Book> & loanedBooks = getLoanedBooks();
+    auto * availableBooks = new vector<Book>();
+    std::set_difference(
+            books.begin(),
+            books.end(),
+            loanedBooks.begin(),
+            loanedBooks.end(),
+            std::inserter(*availableBooks, availableBooks->begin())
+    );
+    return *availableBooks;
 }
 
 void Library::printBooks() {
@@ -66,4 +141,3 @@ void Library::printBooks() {
              << endl;
     }
 }
-

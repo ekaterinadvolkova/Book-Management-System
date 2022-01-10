@@ -14,6 +14,9 @@ public:
 
     void printReturnDate() const;
 
+    const Book& getBook() const;
+
+    bool getIsReturned() const;
 private:
     Book book;
     time_t returnDate;

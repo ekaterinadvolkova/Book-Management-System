@@ -16,6 +16,8 @@ public:
 
     const vector<Receipt> &getReceipts() const;
 
+    void deleteReceipt(Book book);
+
 
 private:
     LibraryUser user;

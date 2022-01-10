@@ -1,7 +1,7 @@
 #include "Receipt.h"
 
-void Receipt::setIsReturned(bool isReturnedd) {
-    isReturned = isReturnedd;
+void Receipt::setIsReturned(bool isReturned) {
+    this->isReturned = isReturned;
 }
 
 Receipt::Receipt(Book book_) {
@@ -12,4 +12,12 @@ Receipt::Receipt(Book book_) {
 
 void Receipt::printReturnDate() const {
     cout << "Please, return at latest by " << asctime(localtime(&returnDate)) << endl;
+}
+
+const Book& Receipt::getBook() const {
+    return book;
+}
+
+bool Receipt::getIsReturned() const {
+    return isReturned;
 }

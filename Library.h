@@ -19,9 +19,13 @@ public:
 
     void borrowBook();
 
+    void returnBook();
+
     void printBooks();
 
+    const vector<Book> & getLoanedBooks();
 
+    const vector<Book> & getAvailableBooks();
 private:
     vector<Book> books;
     vector<LibraryCard> libraryCards;
