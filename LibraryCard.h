@@ -2,17 +2,21 @@
 #define CPP_PROJECT_LIBRARYCARD_H
 
 #include <vector>
-#include "Receipt.h"
+#include "Receipt.cpp"
 #include "LibraryUser.h"
 
 class LibraryCard {
+
+    vector<Receipt> receipts;
+
 public:
     LibraryCard(LibraryUser libraryUseruser);
 
+    void addReceipt(Book book);
+
+
 private:
     LibraryUser user;
-    vector<Receipt> receipts;
 };
-
 
 #endif //CPP_PROJECT_LIBRARYCARD_H

@@ -5,8 +5,12 @@
 #include "Book.h"
 
 class Receipt {
+
 public:
-    Receipt();
+
+    Receipt(Book book);
+
+    void setIsReturned(bool isReturned);
 
 private:
     Book book;

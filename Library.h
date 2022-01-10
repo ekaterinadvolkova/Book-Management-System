@@ -17,6 +17,10 @@ public:
 
     void addBook();
 
+    void borrowBook();
+
+    void printBooks();
+
 
 private:
     vector<Book> books;

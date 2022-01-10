@@ -18,7 +18,6 @@ public:
 
     const string &getAuthor() const;
 
-    void addBook();
 
 private:
     string name;

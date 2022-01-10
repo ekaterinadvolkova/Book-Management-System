@@ -2,8 +2,6 @@
 
 Book::Book() = default;
 
-void Book::addBook() {
-}
 
 void Book::setId(int book_id) {
     Book::id = book_id;
