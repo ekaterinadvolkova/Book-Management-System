@@ -4,6 +4,9 @@
 #include "LibraryUser.cpp"
 #include "ctime"
 
+#include <fstream>
+#include <iomanip>
+
 class Book {
 public:
     Book();
@@ -20,7 +23,7 @@ public:
 
     void readTxt(ifstream & is);
 
-    void writeTxt(ostream os);
+    void writeTxt(ostream & os) const;
 
 private:
     string name;

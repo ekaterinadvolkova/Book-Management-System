@@ -40,9 +40,9 @@ public:
 
     void setId(int id);
 
-    void readTxt(ifstream &is);
+    void readTxt(ifstream & is);
 
-    void writeTxt(ofstream &os) const;
+    void writeTxt(ofstream & os) const;
 
 private:
     int id;

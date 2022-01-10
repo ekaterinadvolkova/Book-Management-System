@@ -27,7 +27,7 @@ void Book::registerBook() {
     cin >> author;
 }
 
-void Book::readTxt(ifstream &is {
+void Book::readTxt(ifstream &is) {
     is >> id;
     is >> name;
     is >> author;

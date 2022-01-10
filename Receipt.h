@@ -14,7 +14,7 @@ public:
 
     void printReturnDate() const;
 
-    const Book &getBook() const;
+    const Book& getBook() const;
 
     bool getIsReturned() const;
 
