@@ -10,6 +10,8 @@ public:
 
     void setId(int id);
 
+    void registerBook();
+
     const string &getName() const;
 
     int getId() const;

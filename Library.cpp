@@ -27,9 +27,17 @@ void Library::addUser() {
     LibraryCard libraryCard = LibraryCard(libraryUser);
 
     //set user id
-    int id_user = libraryCards.size()+1;
+    int id_user = libraryCards.size() + 1;
     libraryUser.setId(id_user);
 
     libraryCards.push_back(libraryCard);
+}
+
+void Library::addBook() {
+    Book book = Book();
+    book.registerBook();
+    int id_book = books.size() + 1;
+    book.setId(id_book);
+    books.push_back(book);
 }
 

@@ -12,7 +12,7 @@ public:
 
     void checkBirthDate();
 
-//    static bool checkUserName(string name);
+    void checkUserName(string name);
 
     const string &getFirstName() const;
 

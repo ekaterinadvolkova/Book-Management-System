@@ -15,6 +15,8 @@ public:
 
     void addUser();
 
+    void addBook();
+
 
 private:
     vector<Book> books;

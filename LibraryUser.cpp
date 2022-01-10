@@ -28,11 +28,11 @@ void LibraryUser::registerUser() {
 
     cout << "Enter first name (only latin letters)" << endl;
     cin >> firstName;
-//    checkUserName(firstName);
+    checkUserName(firstName);
 
     cout << "Enter last name (only latin letters)" << endl;
     cin >> lastName;
-//    checkUserName(lastName);
+    checkUserName(lastName);
 
     cout << "Please enter birth date (format: dd-mm-yyyy): ";
     char separator;
@@ -51,19 +51,20 @@ void LibraryUser::checkBirthDate() {
     }
 }
 
-//auto is_invalid = [](unsigned char ch) {
-//    return !(isspace(ch) || isalpha(ch));
-//};
-//void LibraryUser::checkUserName(string name) {
-//
-//    if (is_invalid) {
-//        while (any_of(name.begin(), name.end(), is_invalid)) {
-//            cout << "Invalid character in string." << endl;
-//            cout << "Please input only alphabets or space character." << endl;
-//            cin >> name;
-//        }
-//    }
-//}
+
+void LibraryUser::checkUserName(string name) {
+    auto is_invalid = [](unsigned char ch) {
+        return !(isspace(ch) || isalpha(ch));
+    };
+
+    if (is_invalid) {
+        while (any_of(name.begin(), name.end(), is_invalid)) {
+            cout << "Invalid character in string." << endl;
+            cout << "Please input only alphabets or space character." << endl;
+            cin >> name;
+        }
+    }
+}
 
 int LibraryUser::getId() const {
     return id;

@@ -3,13 +3,6 @@
 Book::Book() = default;
 
 void Book::addBook() {
-    cout << "Enter book name (No spaces. 15 symbols max)" << endl;
-    cin >> name;
-
-    cout << "Enter Author (No spaces. 15 symbols max)" << endl;
-    cin >> author;
-
-    //add checking that length is 15 symbols
 }
 
 void Book::setId(int book_id) {
@@ -26,6 +19,14 @@ int Book::getId() const {
 
 const string &Book::getAuthor() const {
     return author;
+}
+
+void Book::registerBook() {
+    cout << "Enter book name (No spaces. 15 symbols max)" << endl;
+    cin >> name;
+
+    cout << "Enter Author (No spaces. 15 symbols max)" << endl;
+    cin >> author;
 }
 
 
