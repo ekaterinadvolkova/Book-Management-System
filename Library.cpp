@@ -30,6 +30,13 @@ void Library::addUser() {
     LibraryCard libraryCard = LibraryCard(libraryUser);
 
     libraryCards.push_back(libraryCard);
+    cout << "Registered user:" << endl;
+    cout << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday"
+         << endl;
+    cout << setw(4) << libraryUser.getId() << setw(20) << libraryUser.getFirstName() << setw(20)
+         << libraryUser.getLastName() << setw(4) << libraryUser.getBDay() << '-' << libraryUser.getBMonth() << '-'
+         << libraryUser.getBYear()
+         << endl;
 }
 
 void Library::addBook() {
@@ -50,13 +57,13 @@ void Library::borrowBook() {
     int user_id;
     cin >> user_id;
 
+
     libraryCards[user_id - 1].addReceipt(books[book_id - 1]);
 
     cout << "Book " << books[book_id - 1].getName() << " is now loaned." << endl;
 
     libraryCards[user_id - 1].getReceipts().back().printReturnDate();
 }
-
 
 void Library::returnBook() {
     cout << "Enter book id" << endl;
@@ -149,6 +156,8 @@ void Library::saveToFile() {
         libraryCards[i].getUser().writeTxt(users_list);
     }
     users_list.close();
+
+    
 }
 
 void Library::readFromFile() {
@@ -183,7 +192,6 @@ void Library::readFromFile() {
             book.setId(books.size() + 1);
             books.push_back(book);
         }
-
 
     }
     users_list.close();
