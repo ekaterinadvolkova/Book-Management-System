@@ -16,5 +16,5 @@ public:
     void insertItem(int key, int data);
 
     void deleteItem(int key);
-}
+};
 #endif //CPP_PROJECT_LIBRARYCARDSHASHTABLE_H

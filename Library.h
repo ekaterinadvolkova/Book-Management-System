@@ -19,6 +19,6 @@ public:
 private:
     vector<Book> books;
 
-}
+};
 
 #endif //CPP_PROJECT_LIBRARY_H
