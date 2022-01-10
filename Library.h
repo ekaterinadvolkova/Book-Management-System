@@ -22,22 +22,17 @@ public:
 
     void borrowBook();
 
-//    bool validateUser(int id);
-
     bool validateCard(int id);
 
     void returnBook();
 
-    static void print(vector<Book> books);
+    static void print(vector<Book> books, bool available);
 
-    //    const vector<Book> &getAvailableBooks() const;
-//
-//    const vector<Book> &getLoanedBooks() const;
+    const vector<Book> &getBooks() const;
 
 private:
     vector<Book> books;
     vector<LibraryCard> cards;
-
 };
 
 #endif //CPP_PROJECT_LIBRARY_H

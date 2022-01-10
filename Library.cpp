@@ -104,7 +104,7 @@ void Library::init() {
     users_list.close();
 }
 
-void Library::print(vector<Book> books) {
+void Library::print(vector<Book> books, bool available) {
 
     cout << setw(4) << "Id" << setw(20) << "Book" << setw(20) << "Author" << endl;
 
@@ -121,6 +121,10 @@ bool Library::validateCard(int id) {
 
 void Library::readRecords() {
 
+}
+
+const vector<Book> &Library::getBooks() const {
+    return books;
 }
 
 
