@@ -45,6 +45,10 @@ void Library::addBook() {
     int id_book = books.size() + 1;
     book.setId(id_book);
     books.push_back(book);
+    cout << "Registered Book:" << endl;
+    cout << setw(4) << "Id" << setw(20) << "Name" << setw(20) << "Author" << endl;
+    cout << setw(4) << book.getId() << setw(20) << book.getName() << setw(20)
+         << book.getAuthor() << endl;
 }
 
 void Library::borrowBook() {
@@ -157,7 +161,18 @@ void Library::saveToFile() {
     }
     users_list.close();
 
-    
+    cout << "Users' data is saved to a file" << endl;
+
+    //save books data
+    books_list.open(file_books);
+    books_list << "Books list:" << endl;
+    books_list << setw(4) << "Id" << setw(20) << "Name" << setw(20) << "Author" << endl;
+    for (int i = 0; i < books.size(); i++) {
+        books[i].writeTxt(books_list);
+    }
+    books_list.close();
+
+    cout << "Books' data is saved to a file" << endl;
 }
 
 void Library::readFromFile() {
@@ -165,36 +180,41 @@ void Library::readFromFile() {
     //Read from users file
     libraryCards.clear();
     ifstream users_list, books_list;
+
     users_list.open(file_users);
 
     users_list.ignore(1024, '\n');
     users_list.ignore(1024, '\n');
     while (!users_list.eof()) {
         LibraryUser libraryUser = LibraryUser();
-        libraryUser.readTxt(users_list);
+        bool result = libraryUser.readTxt(users_list);
+        if (!result) break;
 
         //set user id
         libraryUser.setId(libraryCards.size() + 1);
         LibraryCard libraryCard = LibraryCard(libraryUser);
-
         libraryCards.push_back(libraryCard);
-
-        //Read from books file
-        books.clear();
-        users_list.open(file_books);
-        books_list.ignore(1024, '\n');
-        books_list.ignore(1024, '\n');
-
-        while (!books_list.eof()) {
-            Book book = Book();
-            book.readTxt(books_list);
-            //set book id
-            book.setId(books.size() + 1);
-            books.push_back(book);
-        }
-
     }
     users_list.close();
+    cout << "Users' data is read to a file" << endl;
 
+    //Read from books file
+    books.clear();
+    books_list.open(file_books);
+
+    books_list.ignore(1024, '\n');
+    books_list.ignore(1024, '\n');
+
+
+    while (!books_list.eof()) {
+        Book book = Book();
+        bool result = book.readTxt(books_list);
+        if (!result) break;
+        //set book id
+        book.setId(books.size() + 1);
+        books.push_back(book);
+    }
+    books_list.close();
+    cout << "Books' data is read to a file" << endl;
 
 }

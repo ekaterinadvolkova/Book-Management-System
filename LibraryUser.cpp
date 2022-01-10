@@ -47,8 +47,12 @@ void LibraryUser::registerUser() {
 
 void LibraryUser::checkBirthDate() {
     char separator;
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    time_t tt = std::chrono::system_clock::to_time_t(now);
+    tm local_tm = *localtime(&tt);
+    int currentYear = local_tm.tm_year + 1900;
 
-    while (month < 0 || month > 12 || day < 1 || day > 31 || year < 1920) {
+    while (month < 0 || month > 12 || day < 1 || day > 31 || year < 1920 || year > currentYear) {
         cout << "Invalid birth date. Enter the date again" << endl;
         cout << "Format: dd-mm-yyyy." << endl;
         cin >> day >> separator >> month >> separator >> year;
@@ -98,12 +102,16 @@ void LibraryUser::setYear(int year) {
     LibraryUser::year = year;
 }
 
-void LibraryUser::readTxt(ifstream & is) {
+bool LibraryUser::readTxt(ifstream & is) {
     char separator;
     is >> id;
     is >> firstName;
     is >> lastName;
     is >> day >> separator >> month >> separator >> year;
+    if (is.fail()) {
+        return false;
+    }
+    return true;
 }
 
 void LibraryUser::writeTxt(ofstream & os) const {

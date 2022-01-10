@@ -21,7 +21,7 @@ public:
 
     const string &getAuthor() const;
 
-    void readTxt(ifstream & is);
+    bool readTxt(ifstream & is);
 
     void writeTxt(ostream & os) const;
 

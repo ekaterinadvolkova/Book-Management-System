@@ -40,7 +40,7 @@ public:
 
     void setId(int id);
 
-    void readTxt(ifstream & is);
+    bool readTxt(ifstream & is);
 
     void writeTxt(ofstream & os) const;
 
