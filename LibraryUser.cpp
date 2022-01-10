@@ -51,15 +51,17 @@ void LibraryUser::checkBirthDate() {
     }
 }
 
-//bool LibraryUser::checkUserName(string name) {
-//    auto is_invalid = [](unsigned char ch) {
-//        return !(isspace(ch) || isalpha(ch));
-//    };
+//auto is_invalid = [](unsigned char ch) {
+//    return !(isspace(ch) || isalpha(ch));
+//};
+//void LibraryUser::checkUserName(string name) {
 //
-//    while (any_of(name.begin(), name.end(), is_invalid)) {
-//        cout << "Invalid character in string." << endl;
-//        cout << "Please input only alphabets or space character." << endl;
-//        cin >> name;
+//    if (is_invalid) {
+//        while (any_of(name.begin(), name.end(), is_invalid)) {
+//            cout << "Invalid character in string." << endl;
+//            cout << "Please input only alphabets or space character." << endl;
+//            cin >> name;
+//        }
 //    }
 //}
 

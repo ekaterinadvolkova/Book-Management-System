@@ -1,6 +1,6 @@
 
 #include "LibraryCard.h"
 
-LibraryCard::LibraryCard(LibraryUser user) {
-    this.user = user;
+LibraryCard::LibraryCard(LibraryUser libraryUser) {
+    user = libraryUser;
 }

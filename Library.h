@@ -4,20 +4,20 @@
 #include <vector>
 #include "Book.cpp"
 #include <list>
-
-#include "LibraryCardsHashtable.h"
+#include "LibraryCard.cpp"
 
 class Library {
-
 
 public:
     Library();
 
     void init();
 
+    void addUser();
+
 
 private:
     vector<Book> books;
     vector<LibraryCard> libraryCards;
-
+};
 #endif //CPP_PROJECT_LIBRARY_H

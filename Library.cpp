@@ -21,3 +21,15 @@ void Library::init() {
     users_list.close();
 }
 
+void Library::addUser() {
+    LibraryUser libraryUser = LibraryUser();
+    libraryUser.registerUser();
+    LibraryCard libraryCard = LibraryCard(libraryUser);
+
+    //set user id
+    int id_user = libraryCards.size()+1;
+    libraryUser.setId(id_user);
+
+    libraryCards.push_back(libraryCard);
+}
+

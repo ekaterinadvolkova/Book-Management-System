@@ -7,7 +7,7 @@
 
 class LibraryCard {
 public:
-    LibraryCard(LibraryUser user);
+    LibraryCard(LibraryUser libraryUseruser);
 
 private:
     LibraryUser user;
