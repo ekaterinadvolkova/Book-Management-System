@@ -11,5 +11,5 @@ Receipt::Receipt(Book book_) {
 }
 
 void Receipt::printReturnDate() const {
-    cout << "Please, return by " << asctime(localtime(&returnDate)) << endl;
+    cout << "Please, return at latest by " << asctime(localtime(&returnDate)) << endl;
 }
