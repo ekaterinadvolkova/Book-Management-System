@@ -19,7 +19,7 @@ public:
     bool getIsReturned() const;
 private:
     Book book;
-    time_t returnDate;
+    std::chrono::system_clock::time_point returnDate;
     bool isReturned;
 };
 

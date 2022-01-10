@@ -54,7 +54,7 @@ void Library::borrowBook() {
 
     cout << "Book " << books[book_id - 1].getName() << " is now loaned." << endl;
 
-    libraryCards[user_id - 1].getReceipts().end()->printReturnDate();
+    libraryCards[user_id - 1].getReceipts().back().printReturnDate();
 }
 
 
@@ -77,7 +77,7 @@ void Library::returnBook() {
     };
 
     auto receipts = libraryCards[user_id - 1].getReceipts();
-    auto receipt = std::find_if(
+    auto receipt = find_if(
             receipts.rbegin(),
             receipts.rend(),
             isReceiptedBook
@@ -88,47 +88,43 @@ void Library::returnBook() {
         receipt->setIsReturned(true);
     }
 
-    //if (find(vec.begin(), vec.end(), returnBook) != vec.end()) {
-
-//        libraryCards[user_id - 1].getReceipts().erase(rece.begin(), );
-//        loanedBooks.erase(next(loanedBooks.begin(), id_book - 1), next(loanedBooks.begin(), id_book));
-    //}
 }
 
-const vector<Book> & Library::getLoanedBooks() {
-    auto * loanedBooks = new vector<Book>();
+const vector<Book> &Library::getLoanedBooks() {
+    auto *loanedBooks = new vector<Book>();
 
-    std::for_each(
+    for_each(
             libraryCards.begin(),
             libraryCards.end(),
-            [&loanedBooks](const LibraryCard& card) {
-                std::for_each(
+            [&loanedBooks](const LibraryCard &card) {
+                for_each(
                         card.getReceipts().begin(),
                         card.getReceipts().end(),
-                        [&loanedBooks](const Receipt& receipt) {
+                        [&loanedBooks](const Receipt &receipt) {
                             if (!receipt.getIsReturned()) {
                                 loanedBooks->push_back(receipt.getBook());
                             }
                         });
             }
-            );
+    );
 
-    std::sort(loanedBooks->begin(), loanedBooks->end(), [](const Book & book1, const Book & book2) {
+    sort(loanedBooks->begin(), loanedBooks->end(), [](const Book &book1, const Book &book2) {
         return book1.getId() < book2.getId();
     });
 
     return *loanedBooks;
 }
 
-const vector<Book> & Library::getAvailableBooks() {
-    const vector<Book> & loanedBooks = getLoanedBooks();
-    auto * availableBooks = new vector<Book>();
-    std::set_difference(
+const vector<Book> &Library::getAvailableBooks() {
+    const vector<Book> &loanedBooks = getLoanedBooks();
+    auto *availableBooks = new vector<Book>();
+    set_difference(
             books.begin(),
             books.end(),
             loanedBooks.begin(),
             loanedBooks.end(),
-            std::inserter(*availableBooks, availableBooks->begin())
+            inserter(*availableBooks, availableBooks->begin()),
+            [](const Book & a, const Book & b) { return a.getId() < b.getId(); }
     );
     return *availableBooks;
 }
