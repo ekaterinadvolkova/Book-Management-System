@@ -32,3 +32,7 @@ void LibraryCard::setBookReturned(int bookId) {
         receipt->setIsReturned(true);
     }
 }
+
+const LibraryUser &LibraryCard::getUser() const {
+    return user;
+}

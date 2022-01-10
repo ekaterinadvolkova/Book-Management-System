@@ -24,11 +24,11 @@ void Library::init() {
 void Library::addUser() {
     LibraryUser libraryUser = LibraryUser();
     libraryUser.registerUser();
-    LibraryCard libraryCard = LibraryCard(libraryUser);
 
     //set user id
-    int id_user = libraryCards.size() + 1;
-    libraryUser.setId(id_user);
+    libraryUser.setId(libraryCards.size() + 1);
+    LibraryCard libraryCard = LibraryCard(libraryUser);
+
     libraryCards.push_back(libraryCard);
 }
 
@@ -104,7 +104,7 @@ const vector<Book> &Library::getAvailableBooks() {
             loanedBooks.begin(),
             loanedBooks.end(),
             inserter(*availableBooks, availableBooks->begin()),
-            [](const Book & a, const Book & b) { return a.getId() < b.getId(); }
+            [](const Book &a, const Book &b) { return a.getId() < b.getId(); }
     );
     return *availableBooks;
 }
@@ -136,4 +136,22 @@ void Library::printAvailableBooks() {
         cout << setw(4) << book.getId() << setw(20) << book.getName() << setw(20) << book.getAuthor()
              << endl;
     }
+}
+
+void Library::saveToFile() {
+    //save users data
+    ofstream users_list, books_list;
+    users_list.open(file_users);
+    users_list << "Users list:" << endl;
+
+    users_list << setw(4) << "Id" << setw(20) << "First Name" << setw(20) << "Last Name" << setw(10) << "Birthday"
+               << endl;
+    for (int i = 0; i < libraryCards.size(); i++) {
+        users_list << setw(4) << libraryCards[i].getUser().getId() << setw(20)
+                   << libraryCards[i].getUser().getFirstName() << setw(20)
+                   << libraryCards[i].getUser().getLastName() << setw(4) << libraryCards[i].getUser().getBDay() << "-"
+                   << libraryCards[i].getUser().getBMonth() << "-" << libraryCards[i].getUser().getBYear() << endl;
+    }
+
+
 }

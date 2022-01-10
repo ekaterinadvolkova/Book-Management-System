@@ -30,6 +30,9 @@ public:
     const vector<Book> & getLoanedBooks();
 
     const vector<Book> & getAvailableBooks();
+
+    void saveToFile();
+
 private:
     vector<Book> books;
     vector<LibraryCard> libraryCards;

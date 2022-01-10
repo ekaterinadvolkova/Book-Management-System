@@ -70,8 +70,8 @@ int LibraryUser::getId() const {
     return id;
 }
 
-void LibraryUser::setId(int id) {
-    LibraryUser::id = id;
+void LibraryUser::setId(int idUser) {
+    id = idUser;
 }
 
 void LibraryUser::setFirstName(const string &firstName) {
