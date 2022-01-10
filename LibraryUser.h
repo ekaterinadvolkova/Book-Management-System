@@ -8,13 +8,13 @@ class LibraryUser {
 public:
     LibraryUser();
 
-    LibraryUser(string library,string libraryName, int day, int month, int year);
+
 
     void registerUser();
 
     void checkBirthDate();
 
-    static bool checkUserName(string name);
+//    static bool checkUserName(string name);
 
     const string &getFirstName() const;
 

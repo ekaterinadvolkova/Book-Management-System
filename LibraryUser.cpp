@@ -28,11 +28,11 @@ void LibraryUser::registerUser() {
 
     cout << "Enter first name (only latin letters)" << endl;
     cin >> firstName;
-    checkUserName(firstName);
+//    checkUserName(firstName);
 
     cout << "Enter last name (only latin letters)" << endl;
     cin >> lastName;
-    checkUserName(lastName);
+//    checkUserName(lastName);
 
     cout << "Please enter birth date (format: dd-mm-yyyy): ";
     char separator;
@@ -51,17 +51,17 @@ void LibraryUser::checkBirthDate() {
     }
 }
 
-bool LibraryUser::checkUserName(string name) {
-    auto is_invalid = [](unsigned char ch) {
-        return !(isspace(ch) || isalpha(ch));
-    };
-
-    while (any_of(name.begin(), name.end(), is_invalid)) {
-        cout << "Invalid character in string." << endl;
-        cout << "Please input only alphabets or space character." << endl;
-        cin >> name;
-    }
-}
+//bool LibraryUser::checkUserName(string name) {
+//    auto is_invalid = [](unsigned char ch) {
+//        return !(isspace(ch) || isalpha(ch));
+//    };
+//
+//    while (any_of(name.begin(), name.end(), is_invalid)) {
+//        cout << "Invalid character in string." << endl;
+//        cout << "Please input only alphabets or space character." << endl;
+//        cin >> name;
+//    }
+//}
 
 int LibraryUser::getId() const {
     return id;
@@ -89,14 +89,6 @@ void LibraryUser::setMonth(int month) {
 
 void LibraryUser::setYear(int year) {
     LibraryUser::year = year;
-}
-
-LibraryUser::LibraryUser(string library, string libraryName, int bday, int bmonth, int byear) {
-    firstName = library;
-    lastName = libraryName;
-    day = bday;
-    month = bmonth;
-    year = byear;
 }
 
 
